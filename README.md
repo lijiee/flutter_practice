@@ -1,1 +1,3 @@
-# flutter_-practice
+# flutter_practice
+练习使用material中的Widget Text,Image,LinearProgressIndicator,Switch,Checkbox,Form,TextFormField等的使用。
+访问原生iOS中assets中的图片资源，访问Android中drawable的图片资源。
