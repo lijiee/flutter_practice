@@ -10,6 +10,8 @@ import './pages/images.dart';
 import './pages/switchs.dart';
 import './pages/textField.dart';
 import './pages/progress.dart';
+import './pages/expanded.dart';
+import './pages/customScrollView.dart';
 
 void main() {
   runApp(MyApp());
@@ -134,11 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // horizontal).
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  _uint8list == null ? Text("d") : Image.memory(_uint8list),
-                ],
-              ),
+              _uint8list == null ? Text("d") : Image.memory(_uint8list),
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headline4,
@@ -188,18 +186,67 @@ class _MyHomePageState extends State<MyHomePage> {
                     OutlineButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => TextFieldPage()
-                        ));
+                            builder: (context) => TextFieldPage()));
                       },
                       child: Text("输入框，表单"),
                     ),
                     RaisedButton.icon(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) =>ProgressPage()));
-                          
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ProgressPage()));
                         },
                         icon: Icon(Icons.add_alarm),
                         label: Text("指示器")),
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ExpandedPage()));
+                      },
+                      child: Text("Expanded"),
+                    ),
+                                        RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => CustomScrollViewPage()));
+                      },
+                      child: Text("CustomScrollViewPage"),
+                    ),
+
+                    
+                    DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Colors.red, Colors.orange[700]]),
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black54,
+                                offset: Offset(3, 3),
+                                blurRadius: 6)
+                          ],
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 20.0),
+                          child: Text(
+                            "data",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        )),
+                       SizedBox(
+                         height: 40,
+                       ),
+                       Transform(
+                            transform: Matrix4.skewY(0.3),
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              color: Colors.deepOrangeAccent,
+                              child: Text("Apartment"),
+                            ),
+                          ),
+
+
                   ],
                 ),
               ),

@@ -17,11 +17,8 @@ class _SwitchAndCheckBoxState extends State<SwitchAndCheckBox> {
       appBar: AppBar(title: Text("switch")),
       body: ListView(
         children: <Widget>[
-          Expanded(
-            child: Row(
-          
+         Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-          
               children: <Widget>[
                 Switch(
                   value: _switchSelected,
@@ -35,9 +32,7 @@ class _SwitchAndCheckBoxState extends State<SwitchAndCheckBox> {
                 Text(_switchSelected ? "开" : "关")
               ],
             ),
-          ),
-          Expanded(
-            child: Row(
+           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Checkbox(
@@ -52,7 +47,8 @@ class _SwitchAndCheckBoxState extends State<SwitchAndCheckBox> {
                 Text(_checkboxSelected ? "开" : "关")
               ],
             ),
-          ),
+
+   
         ],
       ),
     );
