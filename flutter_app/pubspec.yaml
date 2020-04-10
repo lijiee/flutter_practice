@@ -39,12 +39,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
   # assets-generator-begin
   # assets/imgs/*
+     - assets/imgs/background1.png
+     - assets/imgs/background.png
   # assets-generator-end
+  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -56,7 +57,8 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
+
+fonts:
     - family: Raleway
       fonts:
         - asset: assets/fonts/Raleway-Black.ttf

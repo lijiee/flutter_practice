@@ -12,6 +12,11 @@ import './pages/textField.dart';
 import './pages/progress.dart';
 import './pages/expanded.dart';
 import './pages/customScrollView.dart';
+import './pages/future.dart';
+import './pages/stream.dart';
+import './pages/gesturepage.dart';
+import './pages/animated.dart';
+import './pages/heroAnimated.dart';
 
 void main() {
   runApp(MyApp());
@@ -61,7 +66,31 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   Uint8List _uint8list;
-  String _string = "dd";
+  Future<bool> showDeleteConfirmDialog1() {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("提示"),
+          content: Text("您确定要删除当前文件吗?"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("取消"),
+              onPressed: () => Navigator.of(context).pop(), // 关闭对话框
+            ),
+            FlatButton(
+              child: Text("删除"),
+              onPressed: () {
+                //关闭对话框并返回true
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -177,6 +206,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       child: Text("图片"),
                     ),
+                      RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => HeroAnimatedPage()));
+                      },
+                      child: Text("heroImage"),
+                    ),
+
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ScaleAnimalPage()));
+                      },
+                      child: Text("ScaleAnimalPage"),
+                    ),
                     FlatButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -204,15 +248,48 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       child: Text("Expanded"),
                     ),
-                                        RaisedButton(
+                    RaisedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => CustomScrollViewPage()));
                       },
                       child: Text("CustomScrollViewPage"),
                     ),
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => FuturePage()));
+                      },
+                      child: Text("FuturePage"),
+                    ),
+                                        RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => GestureDetecorPage()));
+                      },
+                      child: Text("GestureDetecorPage"),
+                    ),
 
-                    
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => StreamPage()));
+                      },
+                      child: Text("StreamPage"),
+                    ),
+                    RaisedButton(
+                      child: Text("对话框1"),
+                      onPressed: () async {
+                        //弹出对话框并等待其关闭
+                        bool delete = await showDeleteConfirmDialog1();
+                        if (delete == null) {
+                          print("取消删除");
+                        } else {
+                          print("已确认删除");
+                          //... 删除文件
+                        }
+                      },
+                    ),
                     DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -233,20 +310,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             style: TextStyle(color: Colors.white),
                           ),
                         )),
-                       SizedBox(
-                         height: 40,
-                       ),
-                       Transform(
-                            transform: Matrix4.skewY(0.3),
-                            alignment: Alignment.topRight,
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              color: Colors.deepOrangeAccent,
-                              child: Text("Apartment"),
-                            ),
-                          ),
-
-
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Transform(
+                      transform: Matrix4.skewY(0.3),
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        color: Colors.deepOrangeAccent,
+                        child: Text("Apartment"),
+                      ),
+                    ),
                   ],
                 ),
               ),
